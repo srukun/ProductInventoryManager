@@ -8,29 +8,39 @@
 </head>
 <body>
     <h3>Inventory Manager</h3>
-    <div>
-        <h6>Product Name</h6>
-        <input type="text" name="Product Name" id="input-product-name" placeholder="Enter Product Name">
-        <h6>Product Price</h6>
-        <input type="text" name="Product Price" id="input-product-price" placeholder="Enter Product Price">
-        <h6>Product Number</h6>
-        <input type="text" name="Product Number" id="input-product-number" placeholder="Enter Product Number">
-        <button onclick="addProduct()">Add Product</button>
-    </div>
-    <div>
-        <table>
-            <tbody id="inventory-table">
-                    <tr>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Number</td>
-                        <td>Quantity</td>
-                        <td><button onclick="deleteProduct()" id="button-test">Delete</button></td>
-                    </tr>    
-            </tbody>
+    <div class="container">
+        <div class="add-product">
+            <p>Product Name</p>
+            <input type="text" name="Product Name" id="input-product-name" placeholder="Enter Product Name">
+            <p>Product Price</p>
+            <input type="text" name="Product Price" id="input-product-price" placeholder="Enter Product Price">
+            <p>Product Number</p>
+            <input type="text" name="Product Number" id="input-product-number" placeholder="Enter Product Number">
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+        
+        <div>
+            <table>
+                <tbody id="inventory-table">
+                        <tr>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Number</td>
+                            <td>Quantity</td>
+                        </tr>    
+                </tbody>
+    
+            </table>
+        </div>
 
-        </table>
+        <div class="delete-all">
+            <p>Delete Product</p>
+            <input type="text" name="Delete Product" id="delete-product-number" placeholder="Enter Nroduct Number">
+            <button onclick="deleteProduct()">Delete Product</button>
+        </div>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

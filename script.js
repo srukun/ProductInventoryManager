@@ -39,14 +39,12 @@ class InventoryManager{
     constructor(){
         this.#inventory = new Map();
     }
-    find(name){
+    find(number){
         for(const [key, value] of this.#inventory.entries()){
-            console.log(key.name);
-            if(name == key.name){
-                return true;
+            if(number == key.number){
+                return key;
             }
         }
-        return false;
     }
     get inventory(){
         return this.#inventory;
@@ -122,20 +120,52 @@ function displayInventory(){
         const td2 = document.createElement('td');
         const td3 = document.createElement('td');
         const td4 = document.createElement('td');
-        
+        const td5 = document.createElement('td');
+        const btn = document.createElement('Button');
+
         td1.appendChild(document.createTextNode(key.name));
         td2.appendChild(document.createTextNode("$" + key.price));
         td3.appendChild(document.createTextNode(key.number));
         td4.appendChild(document.createTextNode("x " + value));
+        td4.id = "quantity-id"
+        td5.appendChild(btn);
+
+
+        btn.setAttribute('product-number', key.number);
+        btn.setAttribute('quantity-text', 'quantity-id');
+        btn.innerHTML = "Delete";
+        btn.onclick = function(){
+            const product = im.find(parseInt(btn.getAttribute('product-number')));
+
+            if(im.inventory.get(product) > 1){
+                im.inventory.set(product, im.inventory.get(product) - 1);
+                document.getElementById(btn.getAttribute('quantity-text')).innerHTML = "x " + im.inventory.get(product);
+            }
+            else{
+                im.inventory.delete(im.find(parseInt(btn.getAttribute('product-number'))));
+                btn.parentElement.parentElement.remove();
+            }
+        }
+
 
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
+        tr.appendChild(td5);
         tableBody.appendChild(tr);
     }
 }
 
 function deleteProduct(){
-    document.getElementById('button-test').parentElement.parentElement.remove();
+    const productNumber = document.getElementById('delete-product-number').value;
+    if(productNumber.length > 1 && (typeof parseInt(productNumber)) === 'number'){
+        im.inventory.delete(im.find(parseInt(productNumber)));
+        resetTable();
+        displayInventory();
+    }else{
+        alert('Error: Invalid Input');
+    }
+
 }
+
