@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>Inventory Manager</h3>
+    <div>
+        <h6>Product Name</h6>
+        <input type="text" name="Product Name" id="input-product-name" placeholder="Enter Product Name">
+        <h6>Product Price</h6>
+        <input type="text" name="Product Price" id="input-product-price" placeholder="Enter Product Price">
+        <h6>Product Number</h6>
+        <input type="text" name="Product Number" id="input-product-number" placeholder="Enter Product Number">
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+    <div>
+        <table>
+            <tbody id="inventory-table">
+                    <tr>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Number</td>
+                        <td>Quantity</td>
+                        <td><button onclick="deleteProduct()" id="button-test">Delete</button></td>
+                    </tr>    
+            </tbody>
+
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
